@@ -3,7 +3,7 @@ const app = express();
 const educandosRouter = require("./educando");
 
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.send({ message: "Bem vindo a API do PAQ" });
 });
 
 /**
@@ -57,10 +57,10 @@ app.get("/withParams/:id", (req, res) => {
   });
 });
 
-// const port = 3001;
-// app.listen(port, () => {
-//   console.log(`listening port ${port}`);
-// });
+const port = 3001;
+app.listen(port, () => {
+  console.log(`listening port ${port}`);
+});
 
 app.use("/educando", educandosRouter);
 

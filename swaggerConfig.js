@@ -11,9 +11,6 @@ const options = {
       {
         url: "http://localhost:3001/api-docs",
       },
-      {
-        url: "https://paq-api.vercel.app/api-docs",
-      },
     ],
     basePath: "/",
     schemes: ["http"],
