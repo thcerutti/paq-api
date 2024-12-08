@@ -7,7 +7,14 @@ const options = {
       title: "PAQ API",
       description: "API de dados da ong Prototipando a Quebrada",
     },
-    host: "localhost:3001",
+    servers: [
+      {
+        url: "http://localhost:3001/api-docs",
+      },
+      {
+        url: "https://paq-api.vercel.app/api-docs",
+      },
+    ],
     basePath: "/",
     schemes: ["http"],
   },
