@@ -57,10 +57,10 @@ app.get("/withParams/:id", (req, res) => {
   });
 });
 
-const port = 3001;
-app.listen(port, () => {
-  console.log(`listening port ${port}`);
-});
+// const port = 3001;
+// app.listen(port, () => {
+//   console.log(`listening port ${port}`);
+// });
 
 app.use("/educando", educandosRouter);
 
