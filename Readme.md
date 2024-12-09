@@ -15,6 +15,11 @@ O PAQ é uma ONG cujo objetivo é ajudar no ingresso de jovens estudantes de esc
 - **Mentores**: Informações sobre os mentores que participam dos programas.
 - **Eventos**: Dados sobre eventos organizados pelo PAQ.
 
+
+## Sobre o código
+
+Este projeto foi criado com o objetivo de ser open-source e colaborativo, de forma que os educandos e mentores das trilhas do PAQ possam contribuir. Desta forma, para maior inclusão dos educandos que ainda não dominam o Inglês, o código de negócio deve ser escrito em Português (pt-BR) sempre que possível.
+
 ## Como Contribuir
 
 Se você deseja contribuir com o desenvolvimento desta API, por favor, siga as instruções abaixo:
