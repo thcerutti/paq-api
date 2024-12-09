@@ -20,16 +20,34 @@ router.post("/conquista", (_, res) => {
   res.status(201).send({ message: "Conquista cadastrada com sucesso" });
 });
 
-router.post("/criar", (_, res) => {
-  res.status(201).send({ message: "Educando criado com sucesso" });
+router.post("/criar", async (req, res) => {
+  const id = await Educando.criar({
+    nome: req.body.nome,
+    unidade: req.body.unidade,
+    trilha: req.body.trilha,
+    inicio: req.body.inicio,
+  });
+  res.status(201).send({ message: `Educando ${id} criado com sucesso` });
 });
 
-router.put("/:id", (_, res) => {
-  res.send({ message: "Educando atualizado com sucesso" });
+router.put("/:id", (req, res) => {
+  const atualizado = Educando.atualizar({
+    id: req.params.id,
+    nome: req.body.nome,
+    unidade: req.body.unidade,
+    trilha: req.body.trilha,
+    inicio: req.body.inicio,
+  });
+  atualizado
+    ? res.send({ message: "Educando atualizado com sucesso" })
+    : res.status(404).send({ message: "Educando não encontrado" });
 });
 
-router.delete("/:id", (_, res) => {
-  res.send({ message: "Educando deletado com sucesso" });
+router.delete("/:id", (req, res) => {
+  const apagado = Educando.deletar(req.params.id);
+  apagado
+    ? res.send({ message: "Educando apagado com sucesso" })
+    : res.status(404).send({ message: "Educando não encontrado" });
 });
 
 module.exports = router;
