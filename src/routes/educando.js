@@ -1,30 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const dbClient = require("../config/dbClient");
-const { ObjectId } = require("mongodb");
+const Educando = require("../models/Educando");
 
-router.get("/todos", (_, res) => {
-  res.send([
-    { id: 1, nome: "João", unidade: "SC401", trilha: "Programação" },
-    { id: 2, nome: "Maria", unidade: "SC401", trilha: "Programação" },
-    { id: 3, nome: "Pedro", unidade: "Pedra Branca", trilha: "Design" },
-  ]);
+router.get("/todos", async (_, res) => {
+  const educandos = await Educando.listarTodos();
+  educandos
+    ? res.send(educandos)
+    : res.status(404).send({ message: "Nenhum educando encontrado" });
 });
 
 router.get("/:id", async (req, res) => {
-  try {
-    await dbClient.connect();
-    const educando = await dbClient
-      .db(process.env.MONGO_DB_DATABASE)
-      .collection("educando")
-      .findOne({ _id: new ObjectId(req.params.id) });
-
-    educando
-      ? res.send({ nome: educando.nome })
-      : res.status(404).send({ message: "Educando não encontrado" });
-  } finally {
-    await dbClient.close();
-  }
+  const educando = await Educando.buscarPorId(req.params.id);
+  educando
+    ? res.send(educando)
+    : res.status(404).send({ message: "Educando não encontrado" });
 });
 
 router.post("/conquista", (_, res) => {
